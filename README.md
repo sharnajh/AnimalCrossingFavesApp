@@ -1,0 +1,2 @@
+# AnimalCrossingFavesApp
+Created with CodeSandbox
