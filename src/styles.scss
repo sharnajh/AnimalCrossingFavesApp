@@ -1,0 +1,176 @@
+@import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap");
+
+$accent: coral;
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  body {
+    font-family: "Balsamiq Sans", cursive;
+    margin: 0;
+    display: grid;
+    height: 100vh;
+    place-items: center;
+    background-image: url("https://animalcrossingworld.com/wp-content/uploads/2020/04/animal-crossing-new-horizons-1million-artwork.jpg");
+    background-size: cover;
+    #heart {
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+    #sidebar {
+      height: 100vh;
+      width: 25vw;
+      background-color: white;
+      position: fixed;
+      left: 0;
+      top: 0;
+      overflow: scroll;
+      border-right: 2px solid $accent;
+      nav {
+        display: grid;
+        grid-template-columns: 0.5fr 0.5fr;
+        padding: 10px;
+        position: relative;
+        &:after {
+          content: "";
+          position: absolute;
+          width: 90%;
+          height: 3px;
+          background-color: lightgray;
+          bottom: 0;
+          margin: 10px;
+        }
+        #tabber {
+          position: absolute;
+          z-index: 100;
+          width: 45%;
+          height: 3px;
+          background-color: $accent;
+          bottom: 0;
+          transition: 0.3s ease;
+          margin: 10px;
+        }
+        .tab {
+          height: 50px;
+          display: grid;
+          place-items: center;
+          color: $accent;
+          font-size: 17px;
+          cursor: pointer;
+          transition: 0.3s ease;
+        }
+      }
+      ul {
+        animation: fadeIn ease 0.3s;
+        padding: 0;
+        margin: 0;
+        li {
+          list-style-type: none;
+          margin: 0;
+          padding: 0 10px;
+          cursor: pointer;
+          animation: fadeIn ease 0.3s;
+          &:hover {
+            background-color: $accent;
+            color: white;
+          }
+          .info {
+            display: grid;
+            grid-template-columns: 0.5fr 1.5fr 0.5fr;
+            grid-auto-rows: 50px;
+            border-bottom: 1px dashed $accent;
+            .icon {
+              width: 50px;
+              transition: 0.3s ease;
+            }
+            .name {
+              display: grid;
+              place-items: center;
+            }
+            .heart {
+              display: grid;
+              place-items: center;
+              svg {
+                width: 30px;
+                height: 30px;
+              }
+            }
+          }
+        }
+      }
+    }
+    button {
+      cursor: pointer;
+      font-size: 20px;
+      margin-top: 10px;
+      background-color: $accent;
+      border: 0;
+      padding: 10px;
+      color: white;
+      border-radius: 10px;
+      &:hover {
+        background-color: darkorange;
+      }
+    }
+    #wrapper {
+      border-radius: 10px;
+      border: 2px solid $accent;
+      padding: 10px;
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: white;
+      h1 {
+        padding: 0;
+        margin: 0;
+        margin-bottom: 10px;
+        color: $accent;
+        text-align: center;
+        position: relative;
+        width: 100%;
+        svg {
+          width: 35px;
+          height: 35px;
+          position: absolute;
+          right: 0;
+        }
+      }
+      #portrait {
+        width: 250px;
+        border-radius: 50%;
+        overflow: hidden;
+        img {
+          transition: ease 0.3s;
+        }
+      }
+      #data {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 30px;
+        margin-top: 10px;
+        .label {
+          font-weight: bold;
+          display: grid;
+          place-items: center;
+          color: $accent;
+        }
+        .info {
+          margin: 0;
+          display: grid;
+          place-items: center;
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+}
+
