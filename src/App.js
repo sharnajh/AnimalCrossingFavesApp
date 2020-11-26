@@ -21,11 +21,11 @@ const Heart = ({ handleFave, villager }) => {
 };
 
 const Button = ({ fetchVillager, isLoading, blurOut, data }) => {
-  newId = () => {
+  const newId = () => {
     const id = Math.floor(Math.random() * 391) + 1;
     data.some((villager) => villager.id === id) ? newId() : fetchVillager(id);
   };
-  handleClick = async () => {
+  const handleClick = async () => {
     await blurOut(false);
     newId();
   };
@@ -52,6 +52,7 @@ const Info = ({
       </h1>
       <div id="portrait">
         <img
+          alt="portrait"
           src={villager["image_uri"]}
           id="portrait"
           style={{ filter: imgLoaded ? "blur(0px)" : "blur(20px)" }}
@@ -84,6 +85,7 @@ const SectionItem = ({ villager, setID, handleFave }) => {
     <li id="villager-item" onClick={() => setID(villager.id)}>
       <div className="info">
         <img
+          alt="icon"
           src={villager["icon_uri"]}
           className="icon"
           style={{ opacity: loaded ? "1" : "0" }}
@@ -148,14 +150,14 @@ const Sidebar = ({ data, setID, handleFave }) => {
   );
 };
 
-export default App = () => {
+const App = () => {
   const [id, setID] = useState(221);
   const [villager, setVillager] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const [error, toggleError] = useState(null);
   const [villagerData, addVillager] = useState([]);
 
-  handleFave = (vid) => {
+  const handleFave = (vid) => {
     addVillager(
       villagerData.map((v) => {
         if (v.id === vid) return { ...v, favorite: !v.favorite };
@@ -180,7 +182,7 @@ export default App = () => {
 
   useEffect(() => {
     fetchVillager(id);
-  }, [setLoading, addVillager]);
+  }, [setLoading, addVillager, id]);
 
   useEffect(() => {
     const current = villagerData.find((v) => v.id === id);
@@ -207,3 +209,5 @@ export default App = () => {
     </div>
   );
 };
+
+export default App;
